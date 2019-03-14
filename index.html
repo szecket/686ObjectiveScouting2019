@@ -1,0 +1,422 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScoutFormsToCSV</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <form id='scoutingForm'>
+    <div data-sticky-container>
+      <div class="callout dark tight sticky" data-options="stickyOn: small" data-sticky data-margin-top="-4">
+        <div class='grid-container'>
+          <div class='grid-x grid-padding-x'>
+            <div class='cell small-3'>
+              <div class='grid-x'>
+                <div class='cell small-8'>
+                  <input id='event' value='MDOWI' placeholder='Event CODE' class='cell auto warning' type='text' />
+                </div>
+                <div class='cell small-4'>
+                  <input id='parse' class='cell small-2 warning button ' type='button' value="Go" />
+                </div>
+              </div>
+            </div>
+            <div class='cell auto'>
+              <label>Robot Position</label>
+              <select id='position'>
+                <option value="3">Red 1</option>
+                <option value="4">Red 2</option>
+                <option value="5">Red 3</option>
+                <option value="0">Blue 1</option>
+                <option value="1">Blue 2</option>
+                <option value="2">Blue 3</option>
+              </select>
+            </div>
+            <div class="auto cell">
+              <label>Match Number</label>
+              <input type="number" step='1' name='matchNumber' id='matchNumber'  />
+            </div>
+            <div class="auto cell">
+              <label>Scout Name</label>
+              <input type="text" placeholder='Name...' step='1' name='scoutName' id='scoutName'  />
+            </div>
+          </div>
+        </div>
+        <div class="grid-x">
+          <div class='cell small-3'>
+            <input type='text' name='teamNumber' placeholder='team' id='teamNumber'> </input>
+          </div>
+          <div class='cell small-6  text-center'>
+            <input id='submit-form' class='success button ' type='submit' value="Add scout form to match, and clear form" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- This sticky element would stick to the window, with a marginTop of 0 -->
+    <div class='grid-x grid-padding-x'>
+
+      <!-- LEFT SIDE -->
+      <div class="small-6 cell">
+        <strong>Sandstorm Period</strong>
+        <div id='ss' class="callout light tall">
+          <div class='grid-container'>
+            <div class=" grid-x grid-padding-x">
+              <div class='small-3 cell'>
+                <label class='color-dark'>Hatch</label>
+              </div>
+              <div class='auto cell'>
+                <div class='flex'>
+                  <button onclick="countDown('ssHatch')" class='button'  type='button'/>-</button>
+                  <input id='ssHatchVal' type='number' value=0 name='ssHatch' class='val'>
+                  <button onclick="countUp('ssHatch')" class='button'  type='button' />+</button>
+                </div>
+              </div>
+            </div>
+            <div class=" grid-x grid-padding-x">
+              <div class='small-3 cell'>
+                <label class='color-dark'>Cargo</label>
+              </div>
+              <div class='auto cell'>
+                <div class='flex'>
+                  <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
+                  <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
+                  <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                </div>
+              </div>
+            </div>
+            <div class="button-group show round toggle grid-x grid-padding-x">
+              <div class='auto cell'>
+                <label>Start</label>
+              </div>
+              <div class="auto cell">
+                <input type="radio" id="ch-cargo1" name="ch-cargo" value="Didn't Try">
+                <label class="button" for="ch-cargo1">1</label>
+              </div>
+              <div class="auto cell">
+                <input type="radio" id="ch-cargo2" name="ch-cargo" value="Bad">
+                <label class="button" for="ch-cargo2">2</label>
+              </div>
+            </div>
+            <div class=" grid-x grid-padding-x">
+              <div class="checkbox">
+                <label for='ssside'>
+                  <input type="checkbox" id="ssside" name="ssside">
+                  <span class="custom-checkbox"></span>
+                  Side</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+
+
+
+
+        <!-- RIGHT SIDE -->
+        <div class="small-6 cell">
+
+          <strong>End Game</strong>
+          <div class="callout light tall">
+
+
+            <div class="button-group vertical round toggle ">
+              <div class=" grid-x">
+                <div class='cell auto'>
+                  <div class="checkbox">
+                    <label for='triedToClimb'>
+                      <input type="checkbox" id="triedToClimb" name="triedToClimb">
+                      <span class="custom-checkbox"></span>
+                      Tried to climb
+                    </label>
+                  </div>
+                </div>
+              </div>
+                <div id='climbl2' class=" grid-x" style='display:none;'>
+                  <div class='cell shrink'>
+                    <input type="radio" id="climb2" name="climb" value="l2">
+                    <label class="button" for="climb2">O</label>
+                  </div>
+                  <div class="cell shrink breathe left">Level 2</div>
+                  <div class="cell auto switch wide hide" id='l2switch'>
+                    <input class="switch-input" name="level2Success" id="level2Success" type="checkbox" name="level2Success">
+                    <label class="switch-paddle" for="level2Success">
+                      <span class="switch-inactive" aria-hidden="no">fail</span>
+                      <span class="switch-active" aria-hidden="yes">success</span>
+                    </label>
+                  </div>
+                </div>
+              <div id='climbl3' class=" grid-x" style='display:none;'>
+                <div class='cell shrink'>
+                  <input type="radio" id="climb3" name="climb" value="l3">
+                  <label class="button" for="climb3">O</label>
+                </div>
+                <div class="cell shrink breathe left">Level 3</div>
+                <div class="cell auto switch wide hide" id='l3switch'>
+                  <input class="switch-input" name="level3Success" id="level3Success" type="checkbox" name="level3Success">
+                  <label class="switch-paddle" for="level3Success">
+                    <span class="switch-inactive" aria-hidden="no">fail</span>
+                    <span class="switch-active" aria-hidden="yes">success</span>
+                  </label>
+                </div>
+              </div>
+              <div class=" grid-x ">
+                <div class='cell auto'>
+                  <div class="checkbox">
+                    <label for='fell'>
+                      <input type="checkbox" id="fell" name="fell">
+                      <span class="custom-checkbox"></span>
+                      Fell</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <div class='grid-x grid-padding-x'>
+          <div class='auto cell'>
+            <strong>Defense</strong>
+            <div class="callout light tall2">
+              <div class=" grid-x grid-padding-x">
+                <div class="rotated2 auto cell">
+                  Trash
+                </div>
+                <div class="rotated2 auto cell">
+                  Bad
+                </div>
+                <div class="rotated2 auto cell">
+                  Mediocre
+                </div>
+                <div class="rotated2 auto cell">
+                  Ok
+                </div>
+                <div class="rotated2 auto cell">
+                  Good
+                </div>
+              </div>
+
+              <div class=" grid-x ">
+                <div class='auto cell'>
+                  <div class="button-group nolabel round toggle grid-x grid-padding-x">
+                    <div class="auto cell">
+                      <input type="radio" id="defense1" name="defense" value="0">
+                      <label class="button" for="defense1">O</label>
+                    </div>
+                    <div class="auto cell">
+                      <input type="radio" id="defense2" name="defense" value="1">
+                      <label class="button" for="defense2">O</label>
+                    </div>
+                    <div class="auto cell">
+                      <input type="radio" id="defense3" name="defense" value="2">
+                      <label class="button" for="defense3">O</label>
+                    </div>
+                    <div class="auto cell">
+                      <input type="radio" id="defense4" name="defense" value="3">
+                      <label class="button" for="defense4">O</label>
+                    </div>
+                    <div class="auto cell">
+                      <input type="radio" id="defense5" name="defense" value="4">
+                      <label class="button" for="defense5">O</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=" grid-x grid-padding-x">
+                <div class='small-3 cell'>
+                  <label class='color-dark'>Fouls</label>
+                </div>
+                <div class='auto cell'>
+                  <div class='flex'>
+                    <button onclick="countDown('fouls')" class='button'  type='button'/>-</button>
+                    <input id='foulsVal' type='number' value=0 name='fouls' class='val'>
+                    <button onclick="countUp('fouls')" class='button'  type='button' />+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class='grid-x '>
+          <div class='small-6 cell'>
+            <strong>Hatch</strong>
+            <div class="callout light">
+              <div class=" grid-x">
+                <div class='small-5 cell'>
+                  <label class='color-dark'>Low Failed</label>
+                </div>
+                <div class='auto cell'>
+                  <div class='flex'>
+                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
+                    <input id='sscargoVal' type='number' size=2 value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                  </div>
+                </div>
+              </div>
+              <div class=" grid-x ">
+                <div class='small-5 cell'>
+                  <label class='color-dark'>Low Worked</label>
+                </div>
+                <div class='auto cell'>
+                  <div class='flex'>
+                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
+                    <input id='sscargoVal' type='number' size=2 value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class=" grid-x grid-padding-x">
+                <div class="checkbox">
+                  <label for='ssside'>
+                    <input type="checkbox" id="ssside" name="ssside">
+                    <span class="custom-checkbox"></span>
+                    Elevator Present
+                  </label>
+                </div>
+              </div>
+
+              <div class=" grid-x">
+                <div class='small-5 cell'>
+                  <label class='color-dark'>High Failed</label>
+                </div>
+                <div class='auto cell'>
+                  <div class='flex'>
+                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
+                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                  </div>
+                </div>
+              </div>
+              <div class=" grid-x">
+                <div class='small-5 cell'>
+                  <label class='color-dark'>High Worked</label>
+                </div>
+                <div class='auto cell'>
+                  <div class='flex'>
+                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
+                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                  </div>
+                </div>
+              </div>
+              <div class=" grid-x grid-padding-x">
+                <div class="checkbox">
+                  <label for='ssside'>
+                    <input type="checkbox" id="ssside" name="ssside">
+                    <span class="custom-checkbox"></span>
+                    Mechanism Broke
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class='small-6 cell'>
+            <strong>Cargo</strong>
+            <div class="callout light">
+              <div class=" grid-x">
+                <div class='small-5 cell'>
+                  <label class='color-dark'>Low Failed</label>
+                </div>
+                <div class='auto cell'>
+                  <div class='flex'>
+                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
+                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                  </div>
+                </div>
+              </div>
+              <div class=" grid-x ">
+                <div class='small-5 cell'>
+                  <label class='color-dark'>Low Worked</label>
+                </div>
+                <div class='auto cell'>
+                  <div class='flex'>
+                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
+                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class=" grid-x grid-padding-x">
+                <div class="checkbox">
+                  <label for='ssside'>
+                    <input type="checkbox" id="ssside" name="ssside">
+                    <span class="custom-checkbox"></span>
+                    Elevator Present
+                  </label>
+                </div>
+              </div>
+
+              <div class=" grid-x">
+                <div class='small-5 cell'>
+                  <label class='color-dark'>High Failed</label>
+                </div>
+                <div class='auto cell'>
+                  <div class='flex'>
+                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
+                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                  </div>
+                </div>
+              </div>
+              <div class=" grid-x">
+                <div class='small-5 cell'>
+                  <label class='color-dark'>High Work</label>
+                </div>
+                <div class='auto cell'>
+                  <div class='flex'>
+                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
+                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                  </div>
+                </div>
+              </div>
+              <div class=" grid-x grid-padding-x">
+                <div class="checkbox">
+                  <label for='ssside'>
+                    <input type="checkbox" id="ssside" name="ssside">
+                    <span class="custom-checkbox"></span>
+                    Mechanism Broke
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+          <dir class='auto cell'>
+            <label>Comments
+              <textarea name="endgameComments" placeholder="Comments on the drive team itself? (awful human player, argued a lot, widely cheered for, etc.)" rows='4' cols='80'></textarea>
+            </label>
+          </dir>
+        </div>
+        <div class="grid-x grid-padding-x">
+          <textarea class='small-12 cell' id='csv'></textarea>
+        </div>
+      </div>
+
+
+
+    </form>
+
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/what-input/dist/what-input.js"></script>
+    <script src="./node_modules/foundation-sites/dist/js/foundation.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+  </html>
