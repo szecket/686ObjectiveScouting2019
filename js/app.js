@@ -264,7 +264,7 @@ $('#scoutingForm').submit(function(event){
     fouls:$('#foulsVal').val(),
     cargoLowFailed:$('#cargoLowFailedVal').val(),
     cargoLowWorked:$('#cargoLowWorkedVal').val(),
-    cargoElevator:$('#cargoElevatorPresent').prop('checked'),
+    cargoElevator:$('input[name=cargoElevatorPresent]:checked').val(),
     cargoHighWorked:$('#cargoHighWorkedVal').val(),
   	cargoHighFailed:$('#cargoHighFailedVal').val(),
   	cargoBroke:$('#cargoBroke').prop('checked'),
