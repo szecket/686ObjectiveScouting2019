@@ -199,9 +199,13 @@ $('input[name=matchNumber]').on("change paste keyup",function(){
   checkReq();
 })
 $('#triedToClimb').on("change",function(){
+  climbTest();
+})
+function climbTest(){
   $('#triedToClimb').prop('checked') ? $('#climbl2').show() : $('#climbl2').hide()
   $('#triedToClimb').prop('checked') ? $('#climbl3').show() : $('#climbl3').hide()
-})
+  $('#triedToClimb').prop('checked') ? $('#climbSuccess').show() : $('#climbSuccess').hide()
+}
 
 $('input[name=climb]').on("change",function(){
   console.log($('input[name=climb]').val());
@@ -223,7 +227,8 @@ function clearValues(){
   $('#scoutName').val('');
   $('.button-group input[value*=Didn]').prop('checked', true);
   $('.button-group input[value*="N/A"]').prop('checked', true);
-  $('#event').val('MDOWI');
+  // $('#event').val('MDOWI');
+
 }
 
   // variable to hold request
@@ -251,20 +256,40 @@ $('#scoutingForm').submit(function(event){
 
 
   console.log('inputs',$inputs)
-
+  var cl2, cl3;
+  console.log('paddle',$('#climbsuccess').val())
+  if ($('#climb2').prop('checked')){
+    if ($('#climbsuccess').prop('checked')){
+       cl2 = 'true';
+    } else {
+      cl2 = 'false';
+    }
+  } else{
+    cl2 = '0';
+  }
+  if ($('#climb3').prop('checked')){
+    console.log('paddle',$('#climbsuccess').val())
+    if ($('#climbsuccess').prop('checked')){
+       cl3 = 'true';
+    } else {
+      cl3 = 'false';
+    }
+  } else{
+    cl3 = '0';
+  }
 
   var params = {
     teamNumber:$('#teamNumber').val(),
     scoutName:$('#scoutName').val(),
     matchNumber:$('#matchNumber').val(),
     triedToClimb:$('#triedToClimb').prop('checked'),
-    level2:$('#level2Success').prop('checked'),
-    level3:$('#level3Success').prop('checked'),
+    level2:cl2,
+    level3:cl3,
     defense:$('input[name=defense]:checked').val(),
     fouls:$('#foulsVal').val(),
     cargoLowFailed:$('#cargoLowFailedVal').val(),
     cargoLowWorked:$('#cargoLowWorkedVal').val(),
-    cargoElevator:$('input[name=cargoElevatorPresent]:checked').val(),
+    cargoElevator:$('#cargoElevatorPresent').prop('checked'),
     cargoHighWorked:$('#cargoHighWorkedVal').val(),
   	cargoHighFailed:$('#cargoHighFailedVal').val(),
   	cargoBroke:$('#cargoBroke').prop('checked'),
@@ -317,6 +342,7 @@ $('#scoutingForm').submit(function(event){
     if (matchNumber>0){
       $('#matchNumber').val(matchNumber+1);
     };
+    climbTest();
     checkReq();
     console.log('event',$event)
     clearInterval(interval);

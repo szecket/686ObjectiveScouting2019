@@ -143,13 +143,6 @@
                     <label class="button" for="climb2">O</label>
                   </div>
                   <div class="cell shrink breathe left">Level 2</div>
-                  <div class="cell auto switch wide hide" id='l2switch'>
-                    <input class="switch-input" name="level2Success" id="level2Success" type="checkbox" name="level2Success">
-                    <label class="switch-paddle" for="level2Success">
-                      <span class="switch-inactive" aria-hidden="no">fail</span>
-                      <span class="switch-active" aria-hidden="yes">success</span>
-                    </label>
-                  </div>
                 </div>
               <div id='climbl3' class=" grid-x" style='display:none;'>
                 <div class='cell shrink'>
@@ -157,9 +150,11 @@
                   <label class="button" for="climb3">O</label>
                 </div>
                 <div class="cell shrink breathe left">Level 3</div>
-                <div class="cell auto switch wide hide" id='l3switch'>
-                  <input class="switch-input" name="level3Success" id="level3Success" type="checkbox" name="level3Success">
-                  <label class="switch-paddle" for="level3Success">
+              </div>
+              <div id='climbSuccess' class='grid-x' style='display:none;'>
+                <div class="cell auto switch wide" id='successswitch'>
+                  <input class="switch-input" name="climbsuccess" id="climbsuccess" type="checkbox">
+                  <label class="switch-paddle" for="climbsuccess">
                     <span class="switch-inactive" aria-hidden="no">fail</span>
                     <span class="switch-active" aria-hidden="yes">success</span>
                   </label>
