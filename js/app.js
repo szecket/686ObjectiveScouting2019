@@ -15,6 +15,7 @@ var $event;
 var $eventEntered;
 var $requiredSatisfied = false;
 var $position;
+var $teamsParsed = false;
 
 auto=true;
 
@@ -50,6 +51,11 @@ function parseTeams(){
     $schedule = matches;
     console.log('DATA',data);
     console.log('define schedule',$schedule)
+    $('#position').attr('disabled',true);
+    $('#teamNumber').attr('readonly',true);
+    $('#teamNumber').val('');
+    checkReq();
+    $teamsParsed = true;
   });
 }
 function setTime(val){
@@ -155,16 +161,21 @@ function textToClipboard (text) {
     document.body.removeChild(dummy);
 }
 function checkReq(){
-  try{
-    $('#teamNumber').val($schedule[$('#matchNumber').val()].teams[$('#position').val()].slice(3));
-  }
-  catch(err){
-  }
+    // if ($teamsParsed){
+      if ($('#matchNumber').val()==0){
+        $('#teamNumber').attr('readonly',false);
+      } else {
+        if ($teamsParsed){
+          $('#teamNumber').attr('readonly',true);
+        }
+      }
+      try {
+      $('#teamNumber').val($schedule[$('#matchNumber').val()].teams[$('#position').val()].slice(3));
+      } catch(err){}
+    // }
   $matchNumber = Number($('#matchNumber').val());
-  if ($eventEntered){hintTeams();}
-  // console.log('schedule',$schedule[$matchNumber-1])
   if(
-    ($('input[name=teamNumber]').val()!='') && $('#matchNumber').val()!=''){
+    ($('#teamNumber').val()!='') && $('#matchNumber').val()!=''){
     $('.alert').removeClass('alert');
     $requiredSatisfied = true;
     $('#submit-form').val('Add scout form to match, and clear form');
@@ -175,6 +186,8 @@ function checkReq(){
     $requiredSatisfied = false;
   }
 }
+
+
 function hintTeams(){
   $('#teamNumber option').css('display','visible');
   $('.highlighted').removeClass('highlighted');
@@ -191,7 +204,9 @@ function hintTeams(){
       console.log('not messing with team#s')
   }
 }
-
+$('#teamNumber').on("change paste keyup",function(){
+  checkReq();
+})
 $('#position').on("change paste keyup",function(){
   checkReq();
 })
@@ -213,20 +228,20 @@ $('input[name=climb]').on("change",function(){
 
 function clearValues(){
   $requiredSatisfied = false;
+  var matchNumber = Number($('#matchNumber').val());
+  var teamNumber = Number($('#teamNumber').val());
+  console.log('team number', teamNumber);
   $position = $('#position').val();
   $('input[type=number]').val('0');
   $('input[type=text]').val('');
   $('textarea').val('')
-  $('#foul').html('0');
-  $('#techFoul').html('0');
-  $('#matchNumber').val(Number($('#matchNumber').val())+1);
+  $('#teamNumber').val('');
+  if (matchNumber>0){
+    $('#matchNumber').val(matchNumber+1);
+  }
   $('input').prop( "checked",false );
   $('select').prop( "checked",false );
-  $('input[name=teamNumber]').val('');
-  $('select[name=teamNumber]').val('Pick a team');
   $('#scoutName').val('');
-  $('.button-group input[value*=Didn]').prop('checked', true);
-  $('.button-group input[value*="N/A"]').prop('checked', true);
   // $('#event').val('MDOWI');
 
 }
@@ -234,138 +249,145 @@ function clearValues(){
   // variable to hold request
   var request;
 
-$('#scoutingForm').submit(function(event){
-  console.log('something happened',event)
+$('#submit-form').click(function(){
+  if ($requiredSatisfied) {
 
-  // Prevent default posting of form - put here to work in case of errors
-  event.preventDefault();
+    // Prevent default posting of form - put here to work in case of errors
+    event.preventDefault();
 
-  // Abort any pending request
-  if (request) {
-    request.abort();
-  }
-
-  // setup some local variables
-  var $form = $(this);
-  console.log('something fired',event)
-
-
-  // Let's select and cache all the fields
-  var $inputs = $form.find("input, select, textarea");
-
-
-
-  console.log('inputs',$inputs)
-  var cl2, cl3;
-  console.log('paddle',$('#climbsuccess').val())
-  if ($('#climb2').prop('checked')){
-    if ($('#climbsuccess').prop('checked')){
-       cl2 = 'true';
-    } else {
-      cl2 = 'false';
+    // Abort any pending request
+    if (request) {
+      request.abort();
     }
-  } else{
-    cl2 = '0';
-  }
-  if ($('#climb3').prop('checked')){
+
+    // setup some local variables
+    var $form = $(this);
+
+
+    // Let's select and cache all the fields
+    var $inputs = $form.find("input, select, textarea");
+
+
+
+    console.log('inputs',$inputs)
+    var cl2, cl3;
     console.log('paddle',$('#climbsuccess').val())
-    if ($('#climbsuccess').prop('checked')){
-       cl3 = 'true';
-    } else {
-      cl3 = 'false';
+    if ($('#climb2').prop('checked')){
+      if ($('#climbsuccess').prop('checked')){
+         cl2 = 'true';
+      } else {
+        cl2 = 'false';
+      }
+    } else{
+      cl2 = '0';
     }
-  } else{
-    cl3 = '0';
-  }
+    if ($('#climb3').prop('checked')){
+      console.log('paddle',$('#climbsuccess').val())
+      if ($('#climbsuccess').prop('checked')){
+         cl3 = 'true';
+      } else {
+        cl3 = 'false';
+      }
+    } else{
+      cl3 = '0';
+    }
 
-  var params = {
-    teamNumber:$('#teamNumber').val(),
-    scoutName:$('#scoutName').val(),
-    matchNumber:$('#matchNumber').val(),
-    triedToClimb:$('#triedToClimb').prop('checked'),
-    level2:cl2,
-    level3:cl3,
-    defense:$('input[name=defense]:checked').val(),
-    fouls:$('#foulsVal').val(),
-    cargoLowFailed:$('#cargoLowFailedVal').val(),
-    cargoLowWorked:$('#cargoLowWorkedVal').val(),
-    cargoElevator:$('#cargoElevatorPresent').prop('checked'),
-    cargoHighWorked:$('#cargoHighWorkedVal').val(),
-  	cargoHighFailed:$('#cargoHighFailedVal').val(),
-  	cargoBroke:$('#cargoBroke').prop('checked'),
-  	hatchLowFailed:$('#hatchLowFailedVal').val(),
-  	hatchLowWorked:$('#hatchLowWorkedVal').val(),
-  	hatchElevator:$('#hatchElevatorPresent').prop('checked'),
-  	hatchHighFailed:$('#hatchHighFailedVal').val(),
-  	hatchHighWorked:$('#hatchHighWorkedVal').val(),
-  	hatchBroke:$('#hatchBroke').prop('checked'),
-  	ssHatch:$('#ssHatchVal').val(),
-  	ssCargo:$('#sscargoVal').val(),
-  	startLevel:$('input[name=startLevel]:checked').val(),
-  	side:$('#ssside').prop('checked'),
-    fell:$('#fell').prop('checked'),
-  }
-  var serializedData = $.param(params);
-  console.log('serializedData',serializedData)
+    var params = {
+      teamNumber:$('#teamNumber').val(),
+      scoutName:$('#scoutName').val(),
+      matchNumber:$('#matchNumber').val(),
+      triedToClimb:$('#triedToClimb').prop('checked'),
+      level2:cl2,
+      level3:cl3,
+      defense:$('input[name=defense]:checked').val(),
+      fouls:$('#foulsVal').val(),
+      cargoLowFailed:$('#cargoLowFailedVal').val(),
+      cargoLowWorked:$('#cargoLowWorkedVal').val(),
+      cargoElevator:$('#cargoElevatorPresent').prop('checked'),
+      cargoHighWorked:$('#cargoHighWorkedVal').val(),
+    	cargoHighFailed:$('#cargoHighFailedVal').val(),
+    	cargoBroke:$('#cargoBroke').prop('checked'),
+    	hatchLowFailed:$('#hatchLowFailedVal').val(),
+    	hatchLowWorked:$('#hatchLowWorkedVal').val(),
+    	hatchElevator:$('#hatchElevatorPresent').prop('checked'),
+    	hatchHighFailed:$('#hatchHighFailedVal').val(),
+    	hatchHighWorked:$('#hatchHighWorkedVal').val(),
+    	hatchBroke:$('#hatchBroke').prop('checked'),
+    	ssHatch:$('#ssHatchVal').val(),
+    	ssCargo:$('#sscargoVal').val(),
+    	startLevel:$('input[name=startLevel]:checked').val(),
+    	side:$('#ssside').prop('checked'),
+      fell:$('#fell').prop('checked'),
+    }
+    var serializedData = $.param(params);
+    console.log('serializedData',serializedData)
 
 
-  // Let's disable the inputs for the duration of the Ajax request.
-  // Note: we disable elements AFTER the form data has been serialized.
-  // Disabled form elements will not be serialized.
-  $inputs.prop("disabled", true);
+    // Let's disable the inputs for the duration of the Ajax request.
+    // Note: we disable elements AFTER the form data has been serialized.
+    // Disabled form elements will not be serialized.
+    $inputs.prop("disabled", true);
 
-  // fire off the request to /form.php
-  request = $.ajax({
-    // url: "https://script.google.com/macros/s/AKfycbz8mbc54K-JZ3dGSlEFzo4Qwml5DrOkGLyxSm0wgLmpcVBE5h5r/exec",
-    url: "https://script.google.com/macros/s/AKfycby42O3qBY63DFNkjaNKPNtdsLG-AzXjbmmVdn_OfuKqbsgQ-34/exec",
-    type: "GET",
-    crossDomain: true,
-    dataType: 'json',
-    data: serializedData
-  });
+    // fire off the request to /form.php
+    request = $.ajax({
+      // url: "https://script.google.com/macros/s/AKfycbz8mbc54K-JZ3dGSlEFzo4Qwml5DrOkGLyxSm0wgLmpcVBE5h5r/exec",
+      url: "https://script.google.com/macros/s/AKfycby42O3qBY63DFNkjaNKPNtdsLG-AzXjbmmVdn_OfuKqbsgQ-34/exec",
+      type: "GET",
+      crossDomain: true,
+      dataType: 'json',
+      data: serializedData
+    });
 
-  // Callback handler that will be called on success
-  request.done(function (response, textStatus, jqXHR){
-    // Log a message to the console
-    console.log("Hooray, it worked!");
-    var scoutName = $('#scoutName').val();
-    var matchNumber = Number($('#matchNumber').val());
-    console.log('match',matchNumber)
-    $('input[type=number]').val('0')
-    $('input[type=text]').val(' ')
-    $('textarea').val(' ')
-    $('#foul').html('0');
-    $('#techFoul').html('0');
-    $('#scoutName').val(scoutName);
-    $('input').prop( "checked",false );
-    $('#event').val($event);
-    if (matchNumber>0){
-      $('#matchNumber').val(matchNumber+1);
-    };
-    climbTest();
-    checkReq();
-    console.log('event',$event)
-    clearInterval(interval);
-    interval=false;
-    timer=15;
-    $('#time').html(timer);
-    auto=true;
+    // Callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+      // Log a message to the console
+      console.log("Hooray, it worked!");
+      // var scoutName = $('#scoutName').val();
+      // var matchNumber = Number($('#matchNumber').val());
+      // console.log('match',matchNumber)
+      // $('input[type=number]').val('0')
+      // $('input[type=text]').val(' ')
+      // $('textarea').val(' ')
+      // $('#foul').html('0');
+      // $('#techFoul').html('0');
+      // $('#scoutName').val(scoutName);
+      // $('input').prop( "checked",false );
+      // $('#event').val($event);
+      // if (matchNumber>0){
+      //   $('#matchNumber').val(matchNumber+1);
+      // } else {
+      //   $
+      // };
+      $requiredSatisfied = false;
+      climbTest();
+      clearValues();
+      checkReq();
+      clearInterval(interval);
+      interval=false;
+      timer=15;
+      $('#time').html(timer);
+      auto=true;
 
-  });
 
-  // Callback handler that will be called on failure
-  request.fail(function (jqXHR, textStatus, errorThrown){
-    // Log the error to the console
-    console.error(
-      "The following error occurred: "+
-      textStatus, errorThrown
-    );
-  });
+    });
 
-  // Callback handler that will be called regardless
-  // if the request failed or succeeded
-  request.always(function () {
-    // Reenable the inputs
-    $inputs.prop("disabled", false);
-  });
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+      // Log the error to the console
+      console.error(
+        "The following error occurred: "+
+        textStatus, errorThrown
+      );
+    });
+
+    // Callback handler that will be called regardless
+    // if the request failed or succeeded
+    request.always(function () {
+      // Reenable the inputs
+      $inputs.prop("disabled", false);
+
+    });
+} else {
+  checkReq();
+}
 });
