@@ -91,12 +91,12 @@
                 <label>Start</label>
               </div>
               <div class="auto cell">
-                <input type="radio" id="ch-cargo1" name="ch-cargo" value="Didn't Try">
-                <label class="button" for="ch-cargo1">1</label>
+                <input type="radio" id="level1" name="startLevel" value="1">
+                <label class="button" for="level1">1</label>
               </div>
               <div class="auto cell">
-                <input type="radio" id="ch-cargo2" name="ch-cargo" value="Bad">
-                <label class="button" for="ch-cargo2">2</label>
+                <input type="radio" id="level2" name="startLevel" value="2">
+                <label class="button" for="level2">2</label>
               </div>
             </div>
             <div class=" grid-x grid-padding-x">
@@ -257,9 +257,9 @@
                 </div>
                 <div class='auto cell'>
                   <div class='flex'>
-                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
-                    <input id='sscargoVal' type='number' size=2 value=0 name='sscargo' class='val'>
-                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                    <button onclick="countDown('hatchLowFailed')" class='button'  type='button'/>-</button>
+                    <input id='hatchLowFailedVal' type='number' size=2 value=0 name='hatchLowFailed' class='val'>
+                    <button onclick="countUp('hatchLowFailed')" class='button'  type='button'/>+</button>
                   </div>
                 </div>
               </div>
@@ -269,17 +269,17 @@
                 </div>
                 <div class='auto cell'>
                   <div class='flex'>
-                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
-                    <input id='sscargoVal' type='number' size=2 value=0 name='sscargo' class='val'>
-                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                    <button onclick="countDown('hatchLowWorked')" class='button'  type='button'/>-</button>
+                    <input id='hatchLowWorkedVal' type='number' size=2 value=0 name='hatchLowWorked' class='val'>
+                    <button onclick="countUp('hatchLowWorked')" class='button'  type='button'/>+</button>
                   </div>
                 </div>
               </div>
 
               <div class=" grid-x grid-padding-x">
                 <div class="checkbox">
-                  <label for='ssside'>
-                    <input type="checkbox" id="ssside" name="ssside">
+                  <label for='hatchElevatorPresent'>
+                    <input type="checkbox" id="hatchElevatorPresent" name="hatchElevatorPresent">
                     <span class="custom-checkbox"></span>
                     Elevator Present
                   </label>
@@ -292,9 +292,9 @@
                 </div>
                 <div class='auto cell'>
                   <div class='flex'>
-                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
-                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
-                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                    <button onclick="countDown('hatchHighFailed')" class='button'  type='button'/>-</button>
+                    <input id='hatchHighFailedVal' type='number' value=0 name='hatchHighFailed' class='val'>
+                    <button onclick="countUp('hatchHighFailed')" class='button'  type='button'/>+</button>
                   </div>
                 </div>
               </div>
@@ -304,16 +304,16 @@
                 </div>
                 <div class='auto cell'>
                   <div class='flex'>
-                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
-                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
-                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                    <button onclick="countDown('hatchHighWorked')" class='button'  type='button'/>-</button>
+                    <input id='hatchHighWorkedVal' type='number' value=0 name='hatchHighWorked' class='val'>
+                    <button onclick="countUp('hatchHighWorked')" class='button'  type='button'/>+</button>
                   </div>
                 </div>
               </div>
               <div class=" grid-x grid-padding-x">
                 <div class="checkbox">
-                  <label for='ssside'>
-                    <input type="checkbox" id="ssside" name="ssside">
+                  <label for='hatchBroke'>
+                    <input type="checkbox" id="hatchBroke" name="hatchBroke">
                     <span class="custom-checkbox"></span>
                     Mechanism Broke
                   </label>
@@ -331,9 +331,9 @@
                 </div>
                 <div class='auto cell'>
                   <div class='flex'>
-                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
-                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
-                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                    <button onclick="countDown('cargoLowFailed')" class='button'  type='button'/>-</button>
+                    <input id='cargoLowFailedVal' type='number' value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('cargoLowFailed')" class='button'  type='button'/>+</button>
                   </div>
                 </div>
               </div>
@@ -343,17 +343,17 @@
                 </div>
                 <div class='auto cell'>
                   <div class='flex'>
-                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
-                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
-                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                    <button onclick="countDown('cargoLowWorked')" class='button'  type='button'/>-</button>
+                    <input id='cargoLowWorkedVal' type='number' value=0 name='sscargo' class='val'>
+                    <button onclick="countUp('cargoLowWorked')" class='button'  type='button'/>+</button>
                   </div>
                 </div>
               </div>
 
               <div class=" grid-x grid-padding-x">
                 <div class="checkbox">
-                  <label for='ssside'>
-                    <input type="checkbox" id="ssside" name="ssside">
+                  <label for='cargoElevatorPresent'>
+                    <input type="checkbox" id="cargoElevatorPresent" name="cargoElevatorPresent">
                     <span class="custom-checkbox"></span>
                     Elevator Present
                   </label>
@@ -366,28 +366,28 @@
                 </div>
                 <div class='auto cell'>
                   <div class='flex'>
-                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
-                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
-                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                    <button onclick="countDown('cargoHighFailed')" class='button'  type='button'/>-</button>
+                    <input id='cargoHighFailedVal' type='number' value=0 name='cargoHighFailed' class='val'>
+                    <button onclick="countUp('cargoHighFailed')" class='button'  type='button'/>+</button>
                   </div>
                 </div>
               </div>
               <div class=" grid-x">
                 <div class='small-5 cell'>
-                  <label class='color-dark'>High Work</label>
+                  <label class='color-dark'>High Worked</label>
                 </div>
                 <div class='auto cell'>
                   <div class='flex'>
-                    <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
-                    <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
-                    <button onclick="countUp('sscargo')" class='button'  type='button'/>+</button>
+                    <button onclick="countDown('cargoHighWorked')" class='button'  type='button'/>-</button>
+                    <input id='cargoHighWorkedVal' type='number' value=0 name='cargoHighWorked' class='val'>
+                    <button onclick="countUp('cargoHighWorked')" class='button'  type='button'/>+</button>
                   </div>
                 </div>
               </div>
               <div class=" grid-x grid-padding-x">
                 <div class="checkbox">
-                  <label for='ssside'>
-                    <input type="checkbox" id="ssside" name="ssside">
+                  <label for='cargoBroke'>
+                    <input type="checkbox" id="cargoBroke" name="cargoBroke">
                     <span class="custom-checkbox"></span>
                     Mechanism Broke
                   </label>
