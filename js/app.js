@@ -217,6 +217,7 @@ $('#triedToClimb').on("change",function(){
   climbTest();
 })
 function climbTest(){
+  $('#triedToClimb').prop('checked') ? $('#climbl1').show() : $('#climbl1').hide()
   $('#triedToClimb').prop('checked') ? $('#climbl2').show() : $('#climbl2').hide()
   $('#triedToClimb').prop('checked') ? $('#climbl3').show() : $('#climbl3').hide()
   $('#triedToClimb').prop('checked') ? $('#climbSuccess').show() : $('#climbSuccess').hide()
@@ -234,6 +235,7 @@ function clearValues(){
   $position = $('#position').val();
   $('input[type=number]').val('0');
   $('input[type=text]').val('');
+  $('input[type=checkbox]').prop( "checked",false );
   $('textarea').val('')
   $('#teamNumber').val('');
   if (matchNumber>0){
@@ -318,6 +320,11 @@ $('#submit-form').click(function(){
     	startLevel:$('input[name=startLevel]:checked').val(),
     	side:$('#ssside').prop('checked'),
       fell:$('#fell').prop('checked'),
+      comments:$('textarea[name=endgameComments]').val(),
+      noshow:$('#noshow').prop('checked'),
+      nosand:$('#nosand').prop('checked'),
+      drivetrainbroke:$('#drivetrainbroke').prop('checked'),
+      elevatorbroke:$('#elevatorbroke').prop('checked'),
     }
     var serializedData = $.param(params);
     console.log('serializedData',serializedData)
@@ -388,8 +395,8 @@ $('#submit-form').click(function(){
       //   $
       // };
       $requiredSatisfied = false;
-      climbTest();
       clearValues();
+      climbTest();
       checkReq();
       clearInterval(interval);
       interval=false;

@@ -79,6 +79,9 @@ button {
 }
 label {
 	font-size:1rem !important;
+	&.small {
+		font-size:0.7rem !important;
+	}
 }
 input {
 	&.hundred {
