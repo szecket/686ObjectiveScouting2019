@@ -321,7 +321,7 @@ $('#submit-form').click(function(){
     	side:$('#ssside').prop('checked'),
       fell:$('#fell').prop('checked'),
       comments:$('textarea[name=endgameComments]').val(),
-      noshow:$('#noshow').val(),
+      noshow:$('#noshow').prop('checked'),
       nosand:$('#nosand').prop('checked'),
       drivetrainbroke:$('#drivetrainbroke').prop('checked'),
       elevatorbroke:$('#elevatorbroke').prop('checked'),
