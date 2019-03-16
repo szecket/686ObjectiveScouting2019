@@ -322,6 +322,35 @@ $('#submit-form').click(function(){
     var serializedData = $.param(params);
     console.log('serializedData',serializedData)
 
+  var params = {
+    teamNumber:$('#teamNumber').val(),
+    scoutName:$('#scoutName').val(),
+    matchNumber:$('#matchNumber').val(),
+    triedToClimb:$('#triedToClimb').prop('checked'),
+    level2:$('#level2Success').prop('checked'),
+    level3:$('#level3Success').prop('checked'),
+    defense:$('input[name=defense]:checked').val(),
+    fouls:$('#foulsVal').val(),
+    cargoLowFailed:$('#cargoLowFailedVal').val(),
+    cargoLowWorked:$('#cargoLowWorkedVal').val(),
+    cargoElevator:$('#cargoElevatorPresent').prop('checked'),
+    cargoHighWorked:$('#cargoHighWorkedVal').val(),
+  	cargoHighFailed:$('#cargoHighFailedVal').val(),
+  	cargoBroke:$('#cargoBroke').prop('checked'),
+  	hatchLowFailed:$('#hatchLowFailedVal').val(),
+  	hatchLowWorked:$('#hatchLowWorkedVal').val(),
+  	hatchElevator:$('#hatchElevatorPresent').prop('checked'),
+  	hatchHighFailed:$('#hatchHighFailedVal').val(),
+  	hatchHighWorked:$('#hatchHighWorkedVal').val(),
+  	hatchBroke:$('#hatchBroke').prop('checked'),
+  	ssHatch:$('#ssHatchVal').val(),
+  	ssCargo:$('#sscargoVal').val(),
+  	startLevel:$('input[name=startLevel]:checked').val(),
+  	side:$('#ssside').prop('checked'),
+    fell:$('#fell').prop('checked'),
+  }
+  var serializedData = $.param(params);
+  console.log('serializedData',serializedData)
 
     // Let's disable the inputs for the duration of the Ajax request.
     // Note: we disable elements AFTER the form data has been serialized.
