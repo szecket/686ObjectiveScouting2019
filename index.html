@@ -12,16 +12,19 @@
     <div class='xlarge-centered large-centered medium-centered xlarge-5 xxlarge-4 large-6 medium-8'>
       <form id='scoutingForm'>
         <div data-sticky-container>
-          <div class="callout dark tight sticky" data-options="stickyOn: small" data-sticky data-margin-top="-4">
+          <div class="callout dark tight sticky" data-options="stickyOn: small" data-sticky data-margin-top="-4.5">
             <div class='grid-container'>
               <div class='grid-x grid-padding-x'>
                 <div class='cell small-3'>
                   <div class='grid-x'>
-                    <div class='cell small-8'>
+                    <div class='cell small-16'>
+                      <label>Event</label>
+                      <div class='flex'>
                       <input id='event' value='MDOWI' placeholder='Event CODE' class='cell auto warning' type='text' />
+                      <input id='parse' class='warning button ' type='button' value="Go" />
+                    </div>
                     </div>
                     <div class='cell small-4'>
-                      <input id='parse' class='cell small-2 warning button ' type='button' value="Go" />
                     </div>
                   </div>
                 </div>
@@ -293,7 +296,7 @@
 
             </div>
 
-            <div class='grid-x '>
+            <div class='grid-x grid-padding-x'>
               <div class='small-6 cell'>
                 <strong>Hatch</strong>
                 <div class="callout light">
