@@ -231,6 +231,7 @@ function clearValues(){
   $requiredSatisfied = false;
   var matchNumber = Number($('#matchNumber').val());
   var teamNumber = Number($('#teamNumber').val());
+  var scoutName = $('#scoutName').val();
   console.log('team number', teamNumber);
   $position = $('#position').val();
   $('input[type=number]').val('0');
@@ -243,7 +244,9 @@ function clearValues(){
   }
   $('input').prop( "checked",false );
   $('select').prop( "checked",false );
-  $('#scoutName').val('');
+  $('#scoutName').val(scoutName);
+  $('#level1').prop('checked', true);
+
   // $('#event').val('MDOWI');
 
 }
