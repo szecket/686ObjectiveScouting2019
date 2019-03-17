@@ -12,17 +12,17 @@
     <div class='xlarge-centered large-centered medium-centered xlarge-5 xxlarge-4 large-6 medium-8'>
       <form id='scoutingForm'>
         <div data-sticky-container>
-          <div class="callout dark tight sticky" data-options="stickyOn: small" data-sticky data-margin-top="-4.5">
+          <div class="callout dark tight sticky" data-options="stickyOn: small" data-sticky data-margin-top="-8">
             <div class='grid-container'>
               <div class='grid-x grid-padding-x'>
                 <div class='cell small-3'>
                   <div class='grid-x'>
                     <div class='cell small-16'>
                       <label>Event</label>
-                      <div class='flex'>
-                      <input id='event' value='MDOWI' placeholder='Event CODE' class='cell auto warning' type='text' />
-                      <input id='parse' class='warning button ' type='button' value="Go" />
-                    </div>
+                      <div class=''>
+                        <input id='event' value='MDOWI' placeholder='Event CODE' class='cell auto warning' type='text' />
+                        <input id='parse' class='warning button ' type='button' value="Go" />
+                      </div>
                     </div>
                     <div class='cell small-4'>
                     </div>
@@ -67,10 +67,8 @@
             <strong>Sandstorm Period</strong>
             <div id='ss' class="callout light tall">
               <div class=" grid-x grid-padding-x">
-                <div class='small-3 cell'>
-                  <label class='color-dark'>Hatch</label>
-                </div>
                 <div class='auto cell'>
+                  <label class='color-dark'>Hatch</label>
                   <div class='flex'>
                     <button onclick="countDown('ssHatch')" class='button'  type='button'/>-</button>
                     <input id='ssHatchVal' type='number' value=0 name='ssHatch' class='val'>
@@ -79,10 +77,8 @@
                 </div>
               </div>
               <div class=" grid-x grid-padding-x">
-                <div class='small-3 cell'>
-                  <label class='color-dark'>Cargo</label>
-                </div>
                 <div class='auto cell'>
+                  <label class='color-dark'>Cargo</label>
                   <div class='flex'>
                     <button onclick="countDown('sscargo')" class='button'  type='button'/>-</button>
                     <input id='sscargoVal' type='number' value=0 name='sscargo' class='val'>
@@ -90,10 +86,11 @@
                   </div>
                 </div>
               </div>
-              <div class="button-group show round toggle grid-x grid-padding-x">
-                <div class='auto cell'>
-                  <label>Start</label>
-                </div>
+
+              <div class='grid-x'>
+                <label>Start</label>
+              </div>
+              <div class="button-group show round toggle grid-x ">
                 <div class="auto cell">
                   <input type="radio" id="level1" name="startLevel" value="1">
                   <label class="button" for="level1">1</label>
@@ -103,370 +100,351 @@
                   <label class="button" for="level2">2</label>
                 </div>
               </div>
-              <div class=" grid-x grid-padding-x">
-                <div class='cell auto'>
-                  <div class="checkbox">
-                    <label for='ssside'>
-                      <input type="checkbox" id="ssside" name="ssside">
-                      <span class="custom-checkbox"></span>
-                      Side</label>
-                    </div>
-                  </div>
-                </div>
-              <div class=" grid-x grid-padding-x">
-                <div class='cell auto'>
-                  <div class="checkbox">
-                    <label for='nosand'>
-                      <input type="checkbox" id="nosand" name="nosand">
-                      <span class="custom-checkbox"></span>
-                      no sandstorm
-                    </label>
-                  </div>
+              <div class=" grid-x ">
+                <div class="checkbox">
+                  <label for='ssside'>
+                    <input type="checkbox" id="ssside" name="ssside">
+                    <span class="custom-checkbox"></span>
+                    Side
+                  </label>
                 </div>
               </div>
-              </div>
-            </div>
-
-
-
-
-            <!-- RIGHT SIDE -->
-            <div class="small-6 cell">
-              <strong>Pit Scouting fails</strong>
-              <div class="callout light tall">
-                <div class="button-group vertical round toggle ">
-                  <div class=" grid-x">
-                    <div class='cell small-16'>
-                      <div class="checkbox">
-                        <label for='noshow'>
-                          <input type="checkbox" id="noshow" name="noshow">
-                          <span class="custom-checkbox"></span>
-                          no show
-                        </label>
-                      </div>
-                    </div>
-                    <div class='cell small-16'>
-                      <div class="checkbox">
-                        <label for='drivetrainbroke'>
-                          <input type="checkbox" id="drivetrainbroke" name="drivetrainbroke">
-                          <span class="custom-checkbox"></span>
-                          drivetrain fail
-                        </label>
-                      </div>
-                    </div>
-                    <div class='cell small-16'>
-                      <div class="checkbox">
-                        <label for='elevatorbroke'>
-                          <input type="checkbox" id="elevatorbroke" name="elevatorbroke">
-                          <span class="custom-checkbox"></span>
-                          elevator fail
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+              <div class=" grid-x">
+                <div class="checkbox">
+                  <label for='nosand'>
+                    <input type="checkbox" id="nosand" name="nosand">
+                    <span class="custom-checkbox"></span>
+                    no sandstorm
+                  </label>
                 </div>
               </div>
-
-
-              <strong>End Game</strong>
-              <div class="callout light tall">
-
-
-                <div class="button-group vertical round toggle ">
-                  <div class=" grid-x">
-                    <div class='cell auto'>
-                      <div class="checkbox">
-                        <label for='triedToClimb'>
-                          <input type="checkbox" id="triedToClimb" name="triedToClimb">
-                          <span class="custom-checkbox"></span>
-                          Tried to climb
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div id='climbl1' class=" grid-x" style='display:none;'>
-                    <div class='cell shrink'>
-                      <input type="radio" id="climb1" name="climb" value="l1">
-                      <label class="button" for="climb1">O</label>
-                    </div>
-                    <div class="cell shrink breathe left">Level 1</div>
-                  </div>
-                  <div id='climbl2' class=" grid-x" style='display:none;'>
-                    <div class='cell shrink'>
-                      <input type="radio" id="climb2" name="climb" value="l2">
-                      <label class="button" for="climb2">O</label>
-                    </div>
-                    <div class="cell shrink breathe left">Level 2</div>
-                  </div>
-                  <div id='climbl3' class=" grid-x" style='display:none;'>
-                    <div class='cell shrink'>
-                      <input type="radio" id="climb3" name="climb" value="l3">
-                      <label class="button" for="climb3">O</label>
-                    </div>
-                    <div class="cell shrink breathe left">Level 3</div>
-                  </div>
-                  <div id='climbSuccess' class='grid-x' style='display:none;'>
-                    <div class="cell auto switch wide" id='successswitch'>
-                      <input class="switch-input" name="climbsuccess" id="climbsuccess" type="checkbox">
-                      <label class="switch-paddle" for="climbsuccess">
-                        <span class="switch-inactive" aria-hidden="no">fail</span>
-                        <span class="switch-active" aria-hidden="yes">success</span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class=" grid-x ">
-                    <div class='cell auto'>
-                      <div class="checkbox">
-                        <label for='fell'>
-                          <input type="checkbox" id="fell" name="fell">
-                          <span class="custom-checkbox"></span>
-                          Fell</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-
-                </div>
-              </div>
-            </div>
-            <div class='grid-x grid-padding-x'>
-              <div class='auto cell'>
-                <strong>Defense</strong>
-                <div class="callout light tall2">
-                  <div class=" grid-x grid-padding-x">
-                    <div class="rotated2 auto cell">
-                      Trash
-                    </div>
-                    <div class="rotated2 auto cell">
-                      Bad
-                    </div>
-                    <div class="rotated2 auto cell">
-                      Mediocre
-                    </div>
-                    <div class="rotated2 auto cell">
-                      Ok
-                    </div>
-                    <div class="rotated2 auto cell">
-                      Good
-                    </div>
-                  </div>
-
-                  <div class=" grid-x ">
-                    <div class='auto cell'>
-                      <div class="button-group nolabel round toggle grid-x grid-padding-x">
-                        <div class="auto cell">
-                          <input type="radio" id="defense1" name="defense" value="0">
-                          <label class="button" for="defense1">O</label>
-                        </div>
-                        <div class="auto cell">
-                          <input type="radio" id="defense2" name="defense" value="1">
-                          <label class="button" for="defense2">O</label>
-                        </div>
-                        <div class="auto cell">
-                          <input type="radio" id="defense3" name="defense" value="2">
-                          <label class="button" for="defense3">O</label>
-                        </div>
-                        <div class="auto cell">
-                          <input type="radio" id="defense4" name="defense" value="3">
-                          <label class="button" for="defense4">O</label>
-                        </div>
-                        <div class="auto cell">
-                          <input type="radio" id="defense5" name="defense" value="4">
-                          <label class="button" for="defense5">O</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class=" grid-x grid-padding-x">
-                    <div class='small-3 cell'>
-                      <label class='color-dark'>Fouls</label>
-                    </div>
-                    <div class='auto cell'>
-                      <div class='flex'>
-                        <button onclick="countDown('fouls')" class='button'  type='button'/>-</button>
-                        <input id='foulsVal' type='number' value=0 name='fouls' class='val'>
-                        <button onclick="countUp('fouls')" class='button'  type='button' />+</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-
-            <div class='grid-x grid-padding-x'>
-              <div class='small-6 cell'>
-                <strong>Hatch</strong>
-                <div class="callout light">
-                  <div class=" grid-x">
-                    <div class='small-5 cell'>
-                      <label class='color-dark'>Low Failed</label>
-                    </div>
-                    <div class='auto cell'>
-                      <div class='flex'>
-                        <button onclick="countDown('hatchLowFailed')" class='button'  type='button'/>-</button>
-                        <input id='hatchLowFailedVal' type='number' size=2 value=0 name='hatchLowFailed' class='val'>
-                        <button onclick="countUp('hatchLowFailed')" class='button'  type='button'/>+</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class=" grid-x ">
-                    <div class='small-5 cell'>
-                      <label class='color-dark'>Low Worked</label>
-                    </div>
-                    <div class='auto cell'>
-                      <div class='flex'>
-                        <button onclick="countDown('hatchLowWorked')" class='button'  type='button'/>-</button>
-                        <input id='hatchLowWorkedVal' type='number' size=2 value=0 name='hatchLowWorked' class='val'>
-                        <button onclick="countUp('hatchLowWorked')" class='button'  type='button'/>+</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class=" grid-x grid-padding-x">
-                    <div class="checkbox">
-                      <label for='hatchElevatorPresent'>
-                        <input type="checkbox" id="hatchElevatorPresent" name="hatchElevatorPresent">
-                        <span class="custom-checkbox"></span>
-                        Elevator Present
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class=" grid-x">
-                    <div class='small-5 cell'>
-                      <label class='color-dark'>High Failed</label>
-                    </div>
-                    <div class='auto cell'>
-                      <div class='flex'>
-                        <button onclick="countDown('hatchHighFailed')" class='button'  type='button'/>-</button>
-                        <input id='hatchHighFailedVal' type='number' value=0 name='hatchHighFailed' class='val'>
-                        <button onclick="countUp('hatchHighFailed')" class='button'  type='button'/>+</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class=" grid-x">
-                    <div class='small-5 cell'>
-                      <label class='color-dark'>High Worked</label>
-                    </div>
-                    <div class='auto cell'>
-                      <div class='flex'>
-                        <button onclick="countDown('hatchHighWorked')" class='button'  type='button'/>-</button>
-                        <input id='hatchHighWorkedVal' type='number' value=0 name='hatchHighWorked' class='val'>
-                        <button onclick="countUp('hatchHighWorked')" class='button'  type='button'/>+</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class=" grid-x grid-padding-x">
-                    <div class="checkbox">
-                      <label for='hatchBroke'>
-                        <input type="checkbox" id="hatchBroke" name="hatchBroke">
-                        <span class="custom-checkbox"></span>
-                        Mechanism Broke
-                      </label>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              <div class='small-6 cell'>
-                <strong>Cargo</strong>
-                <div class="callout light">
-                  <div class=" grid-x">
-                    <div class='small-5 cell'>
-                      <label class='color-dark'>Low Failed</label>
-                    </div>
-                    <div class='auto cell'>
-                      <div class='flex'>
-                        <button onclick="countDown('cargoLowFailed')" class='button'  type='button'/>-</button>
-                        <input id='cargoLowFailedVal' type='number' value=0 name='sscargo' class='val'>
-                        <button onclick="countUp('cargoLowFailed')" class='button'  type='button'/>+</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class=" grid-x ">
-                    <div class='small-5 cell'>
-                      <label class='color-dark'>Low Worked</label>
-                    </div>
-                    <div class='auto cell'>
-                      <div class='flex'>
-                        <button onclick="countDown('cargoLowWorked')" class='button'  type='button'/>-</button>
-                        <input id='cargoLowWorkedVal' type='number' value=0 name='sscargo' class='val'>
-                        <button onclick="countUp('cargoLowWorked')" class='button'  type='button'/>+</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class=" grid-x grid-padding-x">
-                    <div class="checkbox">
-                      <label for='cargoElevatorPresent'>
-                        <input type="checkbox" id="cargoElevatorPresent" name="cargoElevatorPresent">
-                        <span class="custom-checkbox"></span>
-                        Elevator Present
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class=" grid-x">
-                    <div class='small-5 cell'>
-                      <label class='color-dark'>High Failed</label>
-                    </div>
-                    <div class='auto cell'>
-                      <div class='flex'>
-                        <button onclick="countDown('cargoHighFailed')" class='button'  type='button'/>-</button>
-                        <input id='cargoHighFailedVal' type='number' value=0 name='cargoHighFailed' class='val'>
-                        <button onclick="countUp('cargoHighFailed')" class='button'  type='button'/>+</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class=" grid-x">
-                    <div class='small-5 cell'>
-                      <label class='color-dark'>High Worked</label>
-                    </div>
-                    <div class='auto cell'>
-                      <div class='flex'>
-                        <button onclick="countDown('cargoHighWorked')" class='button'  type='button'/>-</button>
-                        <input id='cargoHighWorkedVal' type='number' value=0 name='cargoHighWorked' class='val'>
-                        <button onclick="countUp('cargoHighWorked')" class='button'  type='button'/>+</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class=" grid-x grid-padding-x">
-                    <div class="checkbox">
-                      <label for='cargoBroke'>
-                        <input type="checkbox" id="cargoBroke" name="cargoBroke">
-                        <span class="custom-checkbox"></span>
-                        Mechanism Broke
-                      </label>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="grid-x grid-padding-x">
-              <dir class='auto cell'>
-                <label>Comments
-                  <textarea name="endgameComments" placeholder="Comments on the drive team itself? (awful human player, argued a lot, widely cheered for, etc.)" rows='4' cols='80'></textarea>
-                </label>
-              </dir>
-            </div>
-            <div class="grid-x grid-padding-x">
-              <textarea class='small-12 cell' id='csv'></textarea>
             </div>
           </div>
 
 
 
-        </form>
-      </div>
+
+          <!-- RIGHT SIDE -->
+          <div class="small-6 cell">
+            <strong>Pit Scouting fails</strong>
+            <div class="callout light tall">
+              <div class="button-group vertical round toggle ">
+                <div class=" grid-x">
+                  <div class='cell small-16'>
+                    <div class="checkbox">
+                      <label for='noshow'>
+                        <input type="checkbox" id="noshow" name="noshow">
+                        <span class="custom-checkbox"></span>
+                        no show
+                      </label>
+                    </div>
+                  </div>
+                  <div class='cell small-16'>
+                    <div class="checkbox">
+                      <label for='drivetrainbroke'>
+                        <input type="checkbox" id="drivetrainbroke" name="drivetrainbroke">
+                        <span class="custom-checkbox"></span>
+                        drivetrain fail
+                      </label>
+                    </div>
+                  </div>
+                  <div class='cell small-16'>
+                    <div class="checkbox">
+                      <label for='elevatorbroke'>
+                        <input type="checkbox" id="elevatorbroke" name="elevatorbroke">
+                        <span class="custom-checkbox"></span>
+                        elevator fail
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <strong>End Game</strong>
+            <div class="callout light tall">
+
+
+              <div class="button-group vertical round toggle ">
+                <div class=" grid-x">
+                  <div class='cell auto'>
+                    <div class="checkbox">
+                      <label for='triedToClimb'>
+                        <input type="checkbox" id="triedToClimb" name="triedToClimb">
+                        <span class="custom-checkbox"></span>
+                        Tried climb
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div id='climbl1' class=" grid-x" style='display:none;'>
+                  <div class='cell shrink'>
+                    <input type="radio" id="climb1" name="climb" value="l1">
+                    <label class="button" for="climb1">O</label>
+                  </div>
+                  <div class="cell shrink breathe left">Level 1</div>
+                </div>
+                <div id='climbl2' class=" grid-x" style='display:none;'>
+                  <div class='cell shrink'>
+                    <input type="radio" id="climb2" name="climb" value="l2">
+                    <label class="button" for="climb2">O</label>
+                  </div>
+                  <div class="cell shrink breathe left">Level 2</div>
+                </div>
+                <div id='climbl3' class=" grid-x" style='display:none;'>
+                  <div class='cell shrink'>
+                    <input type="radio" id="climb3" name="climb" value="l3">
+                    <label class="button" for="climb3">O</label>
+                  </div>
+                  <div class="cell shrink breathe left">Level 3</div>
+                </div>
+                <div id='climbSuccess' class='grid-x' style='display:none;'>
+                  <div class="cell auto switch wide" id='successswitch'>
+                    <input class="switch-input" name="climbsuccess" id="climbsuccess" type="checkbox">
+                    <label class="switch-paddle" for="climbsuccess">
+                      <span class="switch-inactive" aria-hidden="no">fail</span>
+                      <span class="switch-active" aria-hidden="yes">success</span>
+                    </label>
+                  </div>
+                </div>
+                <div class=" grid-x ">
+                  <div class='cell auto'>
+                    <div class="checkbox">
+                      <label for='fell'>
+                        <input type="checkbox" id="fell" name="fell">
+                        <span class="custom-checkbox"></span>
+                        Fell</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class='grid-x grid-padding-x'>
+            <div class='auto cell'>
+              <strong>Defense</strong>
+              <div class="callout light tall2">
+                <div class=" grid-x grid-padding-x">
+                  <div class="rotated2 auto cell">
+                    Trash
+                  </div>
+                  <div class="rotated2 auto cell">
+                    Bad
+                  </div>
+                  <div class="rotated2 auto cell">
+                    Mediocre
+                  </div>
+                  <div class="rotated2 auto cell">
+                    Ok
+                  </div>
+                  <div class="rotated2 auto cell">
+                    Good
+                  </div>
+                </div>
+
+                <div class=" grid-x ">
+                  <div class='auto cell'>
+                    <div class="button-group nolabel round toggle grid-x grid-padding-x">
+                      <div class="auto cell">
+                        <input type="radio" id="defense1" name="defense" value="0">
+                        <label class="button" for="defense1">O</label>
+                      </div>
+                      <div class="auto cell">
+                        <input type="radio" id="defense2" name="defense" value="1">
+                        <label class="button" for="defense2">O</label>
+                      </div>
+                      <div class="auto cell">
+                        <input type="radio" id="defense3" name="defense" value="2">
+                        <label class="button" for="defense3">O</label>
+                      </div>
+                      <div class="auto cell">
+                        <input type="radio" id="defense4" name="defense" value="3">
+                        <label class="button" for="defense4">O</label>
+                      </div>
+                      <div class="auto cell">
+                        <input type="radio" id="defense5" name="defense" value="4">
+                        <label class="button" for="defense5">O</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class=" grid-x grid-padding-x">
+                  <div class='small-3 cell'>
+                    <label class='color-dark'>Fouls</label>
+                  </div>
+                  <div class='auto cell'>
+                    <div class='flex'>
+                      <button onclick="countDown('fouls')" class='button'  type='button'/>-</button>
+                      <input id='foulsVal' type='number' value=0 name='fouls' class='val'>
+                      <button onclick="countUp('fouls')" class='button'  type='button' />+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class='grid-x grid-padding-x'>
+            <div class='small-6 cell'>
+              <strong>Hatch</strong>
+              <div class="callout light">
+                <div class=" grid-x">
+                  <div class='auto cell'>
+                    <label class='color-dark'>Low Failed</label>
+                    <div class='flex'>
+                      <button onclick="countDown('hatchLowFailed')" class='button'  type='button'/>-</button>
+                      <input id='hatchLowFailedVal' type='number' size=2 value=0 name='hatchLowFailed' class='val'>
+                      <button onclick="countUp('hatchLowFailed')" class='button'  type='button'/>+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" grid-x ">
+                  <div class='auto cell'>
+                    <label class='color-dark'>Low Worked</label>
+                    <div class='flex'>
+                      <button onclick="countDown('hatchLowWorked')" class='button'  type='button'/>-</button>
+                      <input id='hatchLowWorkedVal' type='number' size=2 value=0 name='hatchLowWorked' class='val'>
+                      <button onclick="countUp('hatchLowWorked')" class='button'  type='button'/>+</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class=" grid-x grid-padding-x">
+                  <div class="checkbox">
+                    <label for='hatchElevatorPresent'>
+                      <input type="checkbox" id="hatchElevatorPresent" name="hatchElevatorPresent">
+                      <span class="custom-checkbox"></span>
+                      Elevator
+                    </label>
+                  </div>
+                </div>
+
+                <div class=" grid-x">
+                  <div class='auto cell'>
+                    <label class='color-dark'>High Failed</label>
+                    <div class='flex'>
+                      <button onclick="countDown('hatchHighFailed')" class='button'  type='button'/>-</button>
+                      <input id='hatchHighFailedVal' type='number' value=0 name='hatchHighFailed' class='val'>
+                      <button onclick="countUp('hatchHighFailed')" class='button'  type='button'/>+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" grid-x">
+                  <div class='auto cell'>
+                    <label class='color-dark'>High Worked</label>
+                    <div class='flex'>
+                      <button onclick="countDown('hatchHighWorked')" class='button'  type='button'/>-</button>
+                      <input id='hatchHighWorkedVal' type='number' value=0 name='hatchHighWorked' class='val'>
+                      <button onclick="countUp('hatchHighWorked')" class='button'  type='button'/>+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" grid-x grid-padding-x">
+                  <div class="checkbox">
+                    <label for='hatchBroke'>
+                      <input type="checkbox" id="hatchBroke" name="hatchBroke">
+                      <span class="custom-checkbox"></span>
+                      Broke
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class='small-6 cell'>
+              <strong>Cargo</strong>
+              <div class="callout light">
+                <div class=" grid-x">
+                  <div class='auto cell'>
+                    <label class='color-dark'>Low Failed</label>
+                    <div class='flex'>
+                      <button onclick="countDown('cargoLowFailed')" class='button'  type='button'/>-</button>
+                      <input id='cargoLowFailedVal' type='number' value=0 name='sscargo' class='val'>
+                      <button onclick="countUp('cargoLowFailed')" class='button'  type='button'/>+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" grid-x ">
+                  <div class='auto cell'>
+                    <label class='color-dark'>Low Worked</label>
+                    <div class='flex'>
+                      <button onclick="countDown('cargoLowWorked')" class='button'  type='button'/>-</button>
+                      <input id='cargoLowWorkedVal' type='number' value=0 name='sscargo' class='val'>
+                      <button onclick="countUp('cargoLowWorked')" class='button'  type='button'/>+</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class=" grid-x grid-padding-x">
+                  <div class="checkbox">
+                    <label for='cargoElevatorPresent'>
+                      <input type="checkbox" id="cargoElevatorPresent" name="cargoElevatorPresent">
+                      <span class="custom-checkbox"></span>
+                      Elevator
+                    </label>
+                  </div>
+                </div>
+
+                <div class=" grid-x">
+                  <div class='auto cell'>
+                    <label class='color-dark'>High Failed</label>
+                    <div class='flex'>
+                      <button onclick="countDown('cargoHighFailed')" class='button'  type='button'/>-</button>
+                      <input id='cargoHighFailedVal' type='number' value=0 name='cargoHighFailed' class='val'>
+                      <button onclick="countUp('cargoHighFailed')" class='button'  type='button'/>+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" grid-x">
+                  <div class='auto cell'>
+                    <label class='color-dark'>High Worked</label>
+                    <div class='flex'>
+                      <button onclick="countDown('cargoHighWorked')" class='button'  type='button'/>-</button>
+                      <input id='cargoHighWorkedVal' type='number' value=0 name='cargoHighWorked' class='val'>
+                      <button onclick="countUp('cargoHighWorked')" class='button'  type='button'/>+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" grid-x grid-padding-x">
+                  <div class="checkbox">
+                    <label for='cargoBroke'>
+                      <input type="checkbox" id="cargoBroke" name="cargoBroke">
+                      <span class="custom-checkbox"></span>
+                      Broke
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-x grid-padding-x">
+            <dir class='auto cell'>
+              <label>Comments
+                <textarea name="endgameComments" placeholder="Comments on the drive team itself? (awful human player, argued a lot, widely cheered for, etc.)" rows='4' cols='80'></textarea>
+              </label>
+            </dir>
+          </div>
+          <div class="grid-x grid-padding-x">
+            <textarea class='small-12 cell' id='csv'></textarea>
+          </div>
+        </div>
+
+
+
+      </form>
     </div>
-    <script src="./node_modules/jquery/dist/jquery.js"></script>
-    <script src="./node_modules/what-input/dist/what-input.js"></script>
-    <script src="./node_modules/foundation-sites/dist/js/foundation.js"></script>
-    <script src="./js/app.js"></script>
-  </body>
-  </html>
+  </div>
+  <script src="./node_modules/jquery/dist/jquery.js"></script>
+  <script src="./node_modules/what-input/dist/what-input.js"></script>
+  <script src="./node_modules/foundation-sites/dist/js/foundation.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

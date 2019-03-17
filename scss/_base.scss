@@ -14,6 +14,8 @@ button {
 	width: 50px;
 }
 .callout {
+	padding-left:0.5rem !important;
+	padding-right:0.5rem !important;
 	&.dark {
 		background:#ddd;
 	}
@@ -175,9 +177,12 @@ option {
 .checkbox input[type="checkbox"],
 .radio input[type="radio"] {
   /*position: absolute;*/
-  top: 0;
-  left: 0;
-  visibility: hidden;}
+	top: 0;
+	left: 0;
+	visibility: hidden;
+	width: 0;
+	margin: 0;
+	padding: 0;}
 .checkbox .custom-checkbox,
 .radio .custom-radio {
   display: inline-block;
