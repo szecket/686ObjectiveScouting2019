@@ -178,7 +178,7 @@ function checkReq(){
     ($('#teamNumber').val()!='') && $('#matchNumber').val()!=''){
     $('.alert').removeClass('alert');
     $requiredSatisfied = true;
-    $('#submit-form').val('Add scout form to match, and clear form');
+    $('#submit-form').val('Send Info');
   }
   else {
     $('#submit-form').addClass('alert');
