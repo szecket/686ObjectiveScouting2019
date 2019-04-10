@@ -273,29 +273,26 @@ $('#submit-form').click(function(){
     var $inputs = $form.find("input, select, textarea");
 
 
-
+    var attempt;
+    var success;
     console.log('inputs',$inputs)
     var cl2, cl3;
     console.log('paddle',$('#climbsuccess').val())
-    if ($('#climb2').prop('checked')){
-      if ($('#climbsuccess').prop('checked')){
-         cl2 = 'true';
-      } else {
-        cl2 = 'false';
-      }
-    } else{
-      cl2 = '0';
+    if($('#climb1').prop('checked')){
+      attempt = '1';
+    } else if ($('#climb2').prop('checked')){
+      attempt = '2';
+    } else if($('#climb3').prop('checked')){
+      attempt = '3';
+    } else {
+      attempt = '0';
     }
-    if ($('#climb3').prop('checked')){
-      console.log('paddle',$('#climbsuccess').val())
-      if ($('#climbsuccess').prop('checked')){
-         cl3 = 'true';
+    if ($('#climbsuccess').prop('checked')){
+        success = 'true';
       } else {
-        cl3 = 'false';
+        success = 'false';
       }
-    } else{
-      cl3 = '0';
-    }
+
 
     var params = {
       teamNumber:$('#teamNumber').val(),
@@ -304,31 +301,30 @@ $('#submit-form').click(function(){
       triedToClimb:$('#triedToClimb').prop('checked'),
       level2:cl2,
       level3:cl3,
+      climbAttempt:attempt,
+      climbSucceeded:success,
       defense:$('input[name=defense]:checked').val(),
       fouls:$('#foulsVal').val(),
       cargoLowFailed:$('#cargoLowFailedVal').val(),
       cargoLowWorked:$('#cargoLowWorkedVal').val(),
-      cargoElevator:$('#cargoElevatorPresent').prop('checked'),
       cargoHighWorked:$('#cargoHighWorkedVal').val(),
     	cargoHighFailed:$('#cargoHighFailedVal').val(),
-    	cargoBroke:$('#cargoBroke').prop('checked'),
+    	cargoMechanismBroke:$('#cargoBroke').prop('checked'),
     	hatchLowFailed:$('#hatchLowFailedVal').val(),
     	hatchLowWorked:$('#hatchLowWorkedVal').val(),
-    	hatchElevator:$('#hatchElevatorPresent').prop('checked'),
     	hatchHighFailed:$('#hatchHighFailedVal').val(),
     	hatchHighWorked:$('#hatchHighWorkedVal').val(),
-    	hatchBroke:$('#hatchBroke').prop('checked'),
+    	hatchMechanismBroke:$('#hatchBroke').prop('checked'),
     	ssHatch:$('#ssHatchVal').val(),
     	ssCargo:$('#sscargoVal').val(),
     	startLevel:$('input[name=startLevel]:checked').val(),
-    	side:$('#ssside').prop('checked'),
-      fell:$('#fell').prop('checked'),
+    	ssSide:$('#ssside').prop('checked'),
       comments:$('textarea[name=endgameComments]').val(),
-      noshow:$('#noshow').prop('checked'),
       nosand:$('#nosand').prop('checked'),
-      drivetrainbroke:$('#drivetrainbroke').prop('checked'),
-      elevatorbroke:$('#elevatorbroke').prop('checked'),
+      drivetrainBroke:$('#drivetrainbroke').prop('checked'),
+      elevatorBroke:$('#elevatorbroke').prop('checked'),
     }
+    params[]
     var serializedData = $.param(params);
     console.log('serializedData',serializedData)
 
@@ -342,7 +338,7 @@ $('#submit-form').click(function(){
     // fire off the request to /form.php
     request = $.ajax({
       // url: "https://script.google.com/macros/s/AKfycbz8mbc54K-JZ3dGSlEFzo4Qwml5DrOkGLyxSm0wgLmpcVBE5h5r/exec",
-      url: "https://script.google.com/macros/s/AKfycby42O3qBY63DFNkjaNKPNtdsLG-AzXjbmmVdn_OfuKqbsgQ-34/exec",
+      url: "https://script.google.com/macros/s/AKfycbwisPKkeIkCy--549HAwe0UQ6wtcT53loR5QNqTndjTckPDY8U/exec",
       type: "GET",
       crossDomain: true,
       dataType: 'json',
