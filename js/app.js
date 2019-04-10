@@ -217,6 +217,10 @@ $('#triedToClimb').on("change",function(){
   climbTest();
 })
 function climbTest(){
+  $('#triedToClimb').prop('checked') ? $('#climbl1').show() : $('#climbl1').hide()
+  $('#triedToClimb').prop('checked') ? $('#climbl2').show() : $('#climbl2').hide()
+  $('#triedToClimb').prop('checked') ? $('#climbl3').show() : $('#climbl3').hide()
+  $('#triedToClimb').prop('checked') ? $('#climbSuccess').show() : $('#climbSuccess').hide()
 }
 
 $('input[name=climb]').on("change",function(){
@@ -242,7 +246,6 @@ function clearValues(){
   $('select').prop( "checked",false );
   $('#scoutName').val(scoutName);
   $('#level1').prop('checked', true);
-  $('#climb0').prop('checked', true);
 
   // $('#event').val('MDOWI');
 
@@ -272,7 +275,9 @@ $('#submit-form').click(function(){
 
     var attempt;
     var success;
+    console.log('inputs',$inputs)
     var cl2, cl3;
+    console.log('paddle',$('#climbsuccess').val())
     if($('#climb1').prop('checked')){
       attempt = '1';
     } else if ($('#climb2').prop('checked')){
@@ -298,7 +303,7 @@ $('#submit-form').click(function(){
       level3:cl3,
       climbAttempt:attempt,
       climbSucceeded:success,
-      defense:$('#defense').val(),
+      defense:$('input[name=defense]:checked').val()*2,
       fouls:$('#foulsVal').val(),
       cargoLowFailed:$('#cargoLowFailedVal').val(),
       cargoLowWorked:$('#cargoLowWorkedVal').val(),
@@ -319,6 +324,7 @@ $('#submit-form').click(function(){
       drivetrainBroke:$('#drivetrainbroke').prop('checked'),
       elevatorBroke:$('#elevatorbroke').prop('checked'),
     }
+    params[]
     var serializedData = $.param(params);
     console.log('serializedData',serializedData)
 

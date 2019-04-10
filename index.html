@@ -163,7 +163,7 @@
                     <input type="radio" id="climb0" name="climb" value="l1">
                     <label class="button" for="climb0">O</label>
                   </div>
-                  <div class="cell shrink breathe left">None</div>
+                  <div class="cell shrink breathe left">Didn't Climb</div>
                 </div>
                 <div id='climbl1' class=" grid-x" >
                   <div class='cell shrink'>
@@ -186,18 +186,16 @@
                   </div>
                   <div class="cell shrink breathe left">Level 3</div>
                 </div>
-                <div id='climbSuccess' class='grid-x' >
-                  <div class="cell auto">
-                    <div class="switch wide" id='successswitch'>
-                      <input class="switch-input" name="climbsuccess" id="climbsuccess" type="checkbox">
-                      <label class="switch-paddle" for="climbsuccess">
-                        <span class="switch-inactive" aria-hidden="no">failed</span>
-                        <span class="switch-active" aria-hidden="yes">yay!</span>
-                      </label>
-                    </div>
+                <div id='climbSuccess' class='grid-x' style='display:none;'>
+                  <div class="cell auto switch wide" id='successswitch'>
+                    <input class="switch-input" name="climbsuccess" id="climbsuccess" type="checkbox">
+                    <label class="switch-paddle" for="climbsuccess">
+                      <span class="switch-inactive" aria-hidden="no">fail</span>
+                      <span class="switch-active" aria-hidden="yes">success</span>
+                    </label>
                   </div>
                 </div>
-                <!-- <div class=" grid-x ">
+                <div class=" grid-x ">
                   <div class='cell auto'>
                     <div class="checkbox">
                       <label for='fell'>
@@ -206,7 +204,7 @@
                         Fell</label>
                       </div>
                     </div>
-                  </div> -->
+                  </div>
                 </div>
 
 
@@ -216,16 +214,49 @@
           <div class='grid-x grid-padding-x'>
             <div class='auto cell'>
               <strong>Defense</strong>
-              <div class="callout light">
+              <div class="callout light tall2">
                 <div class=" grid-x grid-padding-x">
-                  <div class="small-10 cell">
-                    <div class="slider" data-slider data-initial-start="0" data-end="10">
-                      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="defense"></span>
-                      <span class="slider-fill" data-slider-fill></span>
-                    </div>
+                  <div class="rotated2 auto cell">
+                    Trash
                   </div>
-                  <div class="small-2 cell">
-                    <input type="number" id="defense">
+                  <div class="rotated2 auto cell">
+                    Bad
+                  </div>
+                  <div class="rotated2 auto cell">
+                    Mediocre
+                  </div>
+                  <div class="rotated2 auto cell">
+                    Ok
+                  </div>
+                  <div class="rotated2 auto cell">
+                    Good
+                  </div>
+                </div>
+
+                <div class=" grid-x ">
+                  <div class='auto cell'>
+                    <div class="button-group nolabel round toggle grid-x grid-padding-x">
+                      <div class="auto cell">
+                        <input type="radio" id="defense1" name="defense" value="0">
+                        <label class="button" for="defense1">O</label>
+                      </div>
+                      <div class="auto cell">
+                        <input type="radio" id="defense2" name="defense" value="1">
+                        <label class="button" for="defense2">O</label>
+                      </div>
+                      <div class="auto cell">
+                        <input type="radio" id="defense3" name="defense" value="2">
+                        <label class="button" for="defense3">O</label>
+                      </div>
+                      <div class="auto cell">
+                        <input type="radio" id="defense4" name="defense" value="3">
+                        <label class="button" for="defense4">O</label>
+                      </div>
+                      <div class="auto cell">
+                        <input type="radio" id="defense5" name="defense" value="4">
+                        <label class="button" for="defense5">O</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class=" grid-x grid-padding-x">
@@ -242,7 +273,6 @@
                 </div>
               </div>
             </div>
-          </div>
 
 
           </div>
