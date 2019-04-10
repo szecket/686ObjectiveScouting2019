@@ -303,7 +303,7 @@ $('#submit-form').click(function(){
       level3:cl3,
       climbAttempt:attempt,
       climbSucceeded:success,
-      defense:$('#defense').val(),  
+      defense:$('input[name=defense]:checked').val()*2,
       fouls:$('#foulsVal').val(),
       cargoLowFailed:$('#cargoLowFailedVal').val(),
       cargoLowWorked:$('#cargoLowWorkedVal').val(),
