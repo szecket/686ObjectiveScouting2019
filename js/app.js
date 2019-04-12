@@ -300,6 +300,7 @@ $('#submit-form').click(function(){
       scoutName:$('#scoutName').val(),
       matchNumber:$('#matchNumber').val(),
       triedToClimb:$('#triedToClimb').prop('checked'),
+      fell:$('#fell').prop('checked'),
       level2:cl2,
       level3:cl3,
       climbAttempt:attempt,
@@ -324,6 +325,7 @@ $('#submit-form').click(function(){
       nosand:$('#nosand').prop('checked'),
       drivetrainBroke:$('#drivetrainbroke').prop('checked'),
       elevatorBroke:$('#elevatorbroke').prop('checked'),
+      climberBroke:$('#climberbroke').prop('checked'),
     }
     var serializedData = $.param(params);
     console.log('serializedData',serializedData)
