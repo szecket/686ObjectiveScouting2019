@@ -287,6 +287,12 @@ $('#submit-form').click(function(){
       } else {
         success = 'false';
       }
+    var startL;
+    if($('input[name=startLevel]:checked').val()==2){
+      startL="`\"Level 2\"";
+    } else {
+      startL="`\"Level 1\""
+    }
 
 
     var params = {
@@ -312,7 +318,7 @@ $('#submit-form').click(function(){
     	hatchMechanismBroke:$('#hatchBroke').prop('checked'),
     	ssHatch:$('#ssHatchVal').val(),
     	ssCargo:$('#sscargoVal').val(),
-    	startLevel:$('input[name=startLevel]:checked').val(),
+    	startLevel:startL,
     	ssSide:$('#ssside').prop('checked'),
       comments:$('textarea[name=endgameComments]').val(),
       nosand:$('#nosand').prop('checked'),
