@@ -289,9 +289,9 @@ $('#submit-form').click(function(){
       }
     var startL;
     if($('input[name=startLevel]:checked').val()==2){
-      startL="`\"Level 2\"";
+      startL="\"Level 2\"";
     } else {
-      startL="`\"Level 1\""
+      startL="\"Level 1\""
     }
 
 
